@@ -13,7 +13,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            App()
+            App(tmdbToken = BuildConfig.TMDB_TOKEN)
         }
     }
 }

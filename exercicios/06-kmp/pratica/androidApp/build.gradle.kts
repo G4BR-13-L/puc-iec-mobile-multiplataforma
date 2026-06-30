@@ -1,4 +1,11 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.util.Properties
+
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.inputStream().use { localProperties.load(it) }
+}
 
 plugins {
     alias(libs.plugins.androidApplication)
@@ -11,11 +18,10 @@ kotlin {
         jvmTarget = JvmTarget.JVM_11
     }
 }
+
 dependencies {
     implementation(projects.shared)
-
     implementation(libs.androidx.activity.compose)
-
     implementation(libs.compose.uiToolingPreview)
     debugImplementation(libs.compose.uiTooling)
 }
@@ -30,6 +36,17 @@ android {
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
+
+        // Token TMDB lido de local.properties (não comitar).
+        // Adicione: tmdb.token=eyJhbGc...  em local.properties
+        buildConfigField(
+            "String",
+            "TMDB_TOKEN",
+            "\"${localProperties["tmdb.token"] ?: ""}\""
+        )
+    }
+    buildFeatures {
+        buildConfig = true
     }
     packaging {
         resources {
