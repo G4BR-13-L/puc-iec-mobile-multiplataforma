@@ -4,9 +4,9 @@ import { useState, useRef } from 'react';
 import { usePopularMovies, isTokenMissing } from '../hooks/useTmdb';
 import { useFavorites } from '../hooks/useFavorites';
 import { useInfiniteScroll } from '../hooks/useInfiniteScroll';
+import { AppHeader } from '../components/AppHeader';
 import { MovieCard } from '../components/MovieCard';
 import { MovieCardSkeleton } from '../components/MovieCardSkeleton';
-import { InstallButton } from '../components/InstallButton';
 import { ErrorScreen } from './ErrorScreen';
 import { TokenMissingScreen } from './TokenMissingScreen';
 
@@ -19,7 +19,6 @@ export function HomeScreen() {
   useInfiniteScroll(sentinelRef, loadMore);
 
   if (isTokenMissing) return <TokenMissingScreen />;
-
   if (error) return <ErrorScreen error={error} />;
 
   const visible = search.trim()
@@ -28,15 +27,7 @@ export function HomeScreen() {
 
   return (
     <main style={styles.main}>
-      <header style={styles.header}>
-        <div>
-          <h1 style={styles.h1}>🎬 Filmes Populares</h1>
-          {count > 0 && (
-            <p style={styles.badge}>★ {count} favorito{count !== 1 ? 's' : ''}</p>
-          )}
-        </div>
-        <InstallButton />
-      </header>
+      <AppHeader favoritesCount={count} />
 
       <input
         type="search"
@@ -79,15 +70,6 @@ export function HomeScreen() {
 
 const styles: Record<string, React.CSSProperties> = {
   main: { maxWidth: 720, margin: '0 auto', padding: '0 16px 40px' },
-  center: { display: 'flex', flexDirection: 'column', alignItems: 'center', padding: 40 },
-  header: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    padding: '20px 0 12px',
-  },
-  h1: { color: '#01b4e4', margin: 0 },
-  badge: { margin: '4px 0 0', color: '#e4a001', fontSize: 13 },
   searchInput: {
     width: '100%',
     boxSizing: 'border-box',
