@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { setSimulateOffline, isSimulatingOffline } from '../services/tmdb';
+import { clearMovies } from '../services/db';
 
 export function NetworkToggle() {
   const [offline, setOffline] = useState(isSimulatingOffline);
@@ -16,15 +17,21 @@ export function NetworkToggle() {
     window.location.reload();
   };
 
+  const clearCache = async () => {
+    await clearMovies();
+    window.location.reload();
+  };
+
   return (
     <div style={styles.wrap}>
       <button onClick={toggle} style={{ ...styles.btn, ...(offline ? styles.offline : styles.online) }}>
         {offline ? '📵 Offline' : '🌐 Online'}
       </button>
+      <button onClick={clearCache} style={{ ...styles.btn, ...styles.clear }}>
+        🗑 Limpar cache
+      </button>
       {offline && (
-        <span style={styles.hint}>
-          Scroll ↓ ou recarregue pra ver o cache IndexedDB
-        </span>
+        <span style={styles.hint}>Reload feito — dados vêm do IndexedDB</span>
       )}
     </div>
   );
@@ -42,5 +49,6 @@ const styles: Record<string, React.CSSProperties> = {
   },
   online:  { background: '#2e7d32', color: '#fff' },
   offline: { background: '#b71c1c', color: '#fff' },
+  clear:   { background: '#37474f', color: '#fff' },
   hint: { color: '#90a4ae', fontSize: 11 },
 };

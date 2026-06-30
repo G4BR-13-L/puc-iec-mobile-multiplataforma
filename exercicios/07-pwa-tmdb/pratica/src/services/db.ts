@@ -21,3 +21,7 @@ export async function saveMovies(page: number, movies: Movie[]): Promise<void> {
 export async function loadMovies(page: number): Promise<Movie[] | undefined> {
   return (await getDB()).get(STORE, `page-${page}`);
 }
+
+export async function clearMovies(): Promise<void> {
+  (await getDB()).clear(STORE);
+}
