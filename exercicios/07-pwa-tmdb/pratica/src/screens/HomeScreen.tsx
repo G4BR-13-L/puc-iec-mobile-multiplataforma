@@ -8,6 +8,7 @@ import { MovieCard } from '../components/MovieCard';
 import { MovieCardSkeleton } from '../components/MovieCardSkeleton';
 import { InstallButton } from '../components/InstallButton';
 import { ErrorScreen } from './ErrorScreen';
+import { TokenMissingScreen } from './TokenMissingScreen';
 
 export function HomeScreen() {
   const { movies, loading, error, hasMore, loadMore } = usePopularMovies();
@@ -17,23 +18,7 @@ export function HomeScreen() {
 
   useInfiniteScroll(sentinelRef, loadMore);
 
-  if (isTokenMissing) {
-    return (
-      <main style={styles.center}>
-        <h2>Token TMDB não configurado</h2>
-        <p>
-          Copie <code>.env.example</code> para <code>.env.local</code> e preencha{' '}
-          <code>VITE_TMDB_TOKEN</code>.
-        </p>
-        <p>
-          Gere em:{' '}
-          <a href="https://www.themoviedb.org/settings/api" style={{ color: '#01b4e4' }}>
-            themoviedb.org/settings/api
-          </a>
-        </p>
-      </main>
-    );
-  }
+  if (isTokenMissing) return <TokenMissingScreen />;
 
   if (error) return <ErrorScreen error={error} />;
 
@@ -115,5 +100,4 @@ const styles: Record<string, React.CSSProperties> = {
     marginBottom: 16,
     outline: 'none',
   },
-  loadingMore: { textAlign: 'center', color: '#90a4ae', padding: '16px 0' },
 };
