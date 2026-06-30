@@ -1,5 +1,7 @@
 // src/screens/TokenMissingScreen.tsx
 
+import { styles } from './TokenMissingScreen.styles';
+
 export function TokenMissingScreen() {
   return (
     <main style={styles.center}>
@@ -17,7 +19,3 @@ export function TokenMissingScreen() {
     </main>
   );
 }
-
-const styles: Record<string, React.CSSProperties> = {
-  center: { display: 'flex', flexDirection: 'column', alignItems: 'center', padding: 40 },
-};
