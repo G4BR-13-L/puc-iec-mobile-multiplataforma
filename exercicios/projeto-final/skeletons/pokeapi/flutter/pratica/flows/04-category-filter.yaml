@@ -1,0 +1,10 @@
+# Feature 4 — categoria/filtro estruturado (tipo fogo)
+appId: com.puciec.pokedex_final
+---
+- launchApp
+- tapOn:
+    id: "category-chip-fire"
+- assertVisible:
+    id: "item-card-6"
+- assertNotVisible:
+    id: "item-card-25"
