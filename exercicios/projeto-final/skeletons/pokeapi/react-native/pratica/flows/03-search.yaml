@@ -7,3 +7,5 @@ appId: com.puciec.pokedexfinal
 - inputText: "charizard"
 - assertVisible:
     id: "item-card-6"
+- assertNotVisible:
+    id: "item-card-1"

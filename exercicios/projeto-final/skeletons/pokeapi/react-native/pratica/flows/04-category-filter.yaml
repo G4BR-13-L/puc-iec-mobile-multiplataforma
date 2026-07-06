@@ -7,4 +7,4 @@ appId: com.puciec.pokedexfinal
 - assertVisible:
     id: "item-card-6"
 - assertNotVisible:
-    id: "item-card-25"
+    id: "item-card-1"
