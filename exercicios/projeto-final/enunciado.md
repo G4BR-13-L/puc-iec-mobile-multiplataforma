@@ -74,10 +74,24 @@ Escolha 1 dos 3 (o mesmo grupo entrega só **1 combinação** tema+framework):
 | Flutter | Atividade 3 | ⭐⭐⭐ |
 | KMP Compose Multiplatform | Atividade 6 | ⭐⭐⭐⭐ |
 
+## Regra de exclusividade: sem combinação repetida
+
+**Cada combinação tema + framework só pode ser usada por UM grupo.** São 5 temas × 3 frameworks =
+**15 combinações** — e bem menos grupos que isso, então não tem por que repetir.
+
+- **Reserva:** o grupo **abre uma issue** no repo público da disciplina com o título
+  `Grupo <nomes> — <tema> + <framework>` assim que decidir. Vale a ordem de chegada
+  (timestamp da issue).
+- Antes de abrir a sua, **olhem as issues existentes** — se a combinação já foi reservada,
+  escolham outra (pode repetir o tema OU o framework, nunca os dois juntos).
+- PR entregue com combinação duplicada sem reserva: **quem reservou primeiro fica com ela**;
+  o outro grupo troca (o esforço nas 5 features transfere quase inteiro — muda só domínio/API).
+
 ## Entrega — passo a passo
 
 **0. Grupo + escolha** — formem o grupo (3-4 pessoas), decidam **1 tema + 1 framework** juntos (ver
-tabelas acima). É a única decisão que precisa de consenso antes de escrever código.
+tabelas acima) e **reservem via issue** (regra de exclusividade acima). É a única decisão que
+precisa de consenso antes de escrever código.
 
 **1. Fork** — cada grupo faz fork do repo público da disciplina (só precisa de 1 fork, quem abre o PR).
 

@@ -21,7 +21,7 @@ import org.example.project.data.TmdbApi
 // App — Composable raiz compartilhado entre Android, iOS e Web.
 //
 // A busca de dados (TmdbApi) já está pronta — o exercício é construir a UI.
-// tmdbToken vem do BuildConfig.TMDB_TOKEN (Android) ou vazio nas outras plataformas.
+// tmdbToken vem do BuildKonfig.TMDB_TOKEN (gerado do local.properties pra todas as plataformas).
 // ─────────────────────────────────────────────────────────────────────────────
 
 @Composable
